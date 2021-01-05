@@ -9,15 +9,7 @@ namespace BaltaStore.Tests
         [TestMethod]
         public void TestMethod1()
         {
-            var c = new Customer(
-                "André",
-                "Baltieri",
-                "12345678911",
-                "hello@balta.io",
-                "1999999999",
-                "Rua dos Developers, 1024");
 
-            // c.FirstName = "";
         }
     }
 }
