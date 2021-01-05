@@ -2,11 +2,15 @@ using System;
 
 namespace BaltaStore.Domain.StoreContext
 {
-    public class Customer
+    public abstract class Person
     {
-        public string Name { get; private set; }
+        public string Name { get; set; }
         public DateTime BirthDate { get; private set; }
         public decimal Salary { get; private set; }
+    }
+    public class Customer : Person
+    {
+        // Propriedades
 
         // Metodos
         public void Register() { }
@@ -14,4 +18,18 @@ namespace BaltaStore.Domain.StoreContext
         //Eventos
         public void AoRegistrar() { }
     }
+
+    public class Salesman : Person
+    {
+
+    }
+
+    public class Teste()
+    {
+        public Teste()
+    {
+        var c = new Person();
+
+    }
+}
 }
