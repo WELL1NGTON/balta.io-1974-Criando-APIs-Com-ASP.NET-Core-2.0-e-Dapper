@@ -19,7 +19,7 @@ namespace BaltaStore.Api.Controllers
         [Route("error")]
         public string Error()
         {
-            throw new System.Exception("Ocorreu algum erro");
+            throw new System.Exception("Algum erro ocorreu");
             return "erro";
         }
 
