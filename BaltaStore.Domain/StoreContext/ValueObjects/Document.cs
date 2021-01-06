@@ -54,7 +54,12 @@ namespace BaltaStore.Domain.StoreContext.ValueObjects
             else
                 resto = 11 - resto;
             digito = digito + resto.ToString();
-            return cpf.EndsWith(digito);
+
+            // ! string.EndsWith(string) não está funcionando com o .NET 5.0.101
+            bool teste = "teste".EndsWith("te");
+
+            // return cpf.EndsWith(digito);
+            return cpf.Substring(cpf.Length - 2) == digito;
         }
     }
 }
