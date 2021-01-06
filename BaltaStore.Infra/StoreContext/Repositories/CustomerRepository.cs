@@ -79,12 +79,12 @@ namespace BaltaStore.Infra.StoreContext.Repositories
                     .FirstOrDefault();
         }
 
-        public IEnumerable<ListCustomerOrderQueryResult> GetOrders(Guid id)
+        public IEnumerable<ListCustomerOrdersQueryResult> GetOrders(Guid id)
         {
             return
                 _context
                     .Connection
-                    .Query<ListCustomerOrderQueryResult>(
+                    .Query<ListCustomerOrdersQueryResult>(
                         "",
                         new { id = id }
                     );

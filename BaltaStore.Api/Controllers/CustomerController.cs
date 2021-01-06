@@ -47,7 +47,7 @@ namespace BaltaStore.Api.Controllers
 
         [HttpGet]
         [Route("v1/customers/{id}/Orders")]
-        public IEnumerable<ListCustomerOrderQueryResult> GetOrders(Guid id)
+        public IEnumerable<ListCustomerOrdersQueryResult> GetOrders(Guid id)
         {
             return _repository.GetOrders(id);
         }

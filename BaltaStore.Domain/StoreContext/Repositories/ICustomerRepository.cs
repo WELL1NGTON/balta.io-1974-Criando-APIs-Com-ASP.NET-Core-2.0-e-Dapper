@@ -13,6 +13,6 @@ namespace BaltaStore.Domain.StoreContext.Repositories
         CustomerOrdersCountResult GetCustomerOrdersCount(string document);
         IEnumerable<ListCustomerQueryResult> Get();
         GetCustomerQueryResult Get(Guid id);
-        IEnumerable<ListCustomerOrderQueryResult> GetOrders(Guid id);
+        IEnumerable<ListCustomerOrdersQueryResult> GetOrders(Guid id);
     }
 }
