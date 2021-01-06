@@ -62,7 +62,7 @@ namespace BaltaStore.Domain.StoreContext.ValueObjects
 
             // ! https://docs.microsoft.com/en-us/dotnet/standard/base-types/string-comparison-net-5-plus
             // CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
-            bool teste = "teste".EndsWith("te", StringComparison.Ordinal);
+            // bool teste = "teste".EndsWith("te", StringComparison.Ordinal);
 
             return cpf.EndsWith(digito, StringComparison.Ordinal);
             // return cpf.Substring(cpf.Length - 2) == digito;
