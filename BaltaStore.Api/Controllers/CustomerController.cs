@@ -54,13 +54,9 @@ namespace BaltaStore.Api.Controllers
 
         [HttpPost]
         [Route("v1/customers")]
-        public object Post([FromBody] CreateCustomerCommand command)
+        public ICommandResult Post([FromBody] CreateCustomerCommand command)
         {
-            var result = (CreateCustomerCommandResult)_handler.Handle(command);
-            if (_handler.Invalid)
-                return BadRequest(new { Notifications = _handler.Notifications });
-
-            return result;
+            return (CreateCustomerCommandResult)_handler.Handle(command);
         }
 
         // [HttpPut]

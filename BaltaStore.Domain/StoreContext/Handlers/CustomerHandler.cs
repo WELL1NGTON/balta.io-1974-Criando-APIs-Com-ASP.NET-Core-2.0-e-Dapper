@@ -49,7 +49,10 @@ namespace BaltaStore.Domain.StoreContext.Handlers
             AddNotifications(customer.Notifications);
 
             if (Invalid)
-                return null;
+                return new CommandResult(
+                    false,
+                    "Por favor, corrija os campos abaixo",
+                    Notifications);
 
             // Persistir o cliente
             _repository.Save(customer);
@@ -58,7 +61,15 @@ namespace BaltaStore.Domain.StoreContext.Handlers
             _emailService.Send(email.Address, "hello@balta.io", "Bem vindo", "Seja bem vindo ao Balta Store!");
 
             // Retornar o resultado para a tela
-            return new CreateCustomerCommandResult(customer.Id, name.ToString(), email.Address);
+            return new CommandResult(
+                true,
+                "Bem vindo ao balta Store",
+                new
+                {
+                    Id = customer.Id,
+                    Name = name.ToString(),
+                    Email = email.Address
+                });
         }
 
         public ICommandResult Handle(AddAddressCommand command)
