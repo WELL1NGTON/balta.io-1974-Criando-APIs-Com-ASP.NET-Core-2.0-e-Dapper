@@ -23,28 +23,35 @@ namespace BaltaStore.Api.Controllers
         }
 
         [HttpGet]
-        [Route("customers")]
+        [Route("v1/customers")]
         public IEnumerable<ListCustomerQueryResult> Get()
         {
             return _repository.Get();
         }
 
         [HttpGet]
-        [Route("customers/{id}")]
+        [Route("v1/customers/{id}")]
         public GetCustomerQueryResult GetById(Guid id)
         {
             return _repository.Get(id);
         }
 
         [HttpGet]
-        [Route("customers/{id}/Orders")]
+        [Route("v2/customers/{document}")]
+        public GetCustomerQueryResult GetByDocument(Guid document)
+        {
+            return _repository.Get(document);
+        }
+
+        [HttpGet]
+        [Route("v1/customers/{id}/Orders")]
         public IEnumerable<ListCustomerOrderQueryResult> GetOrders(Guid id)
         {
             return _repository.GetOrders(id);
         }
 
         [HttpPost]
-        [Route("customers")]
+        [Route("v1/customers")]
         public object Post([FromBody] CreateCustomerCommand command)
         {
             var result = (CreateCustomerCommandResult)_handler.Handle(command);
