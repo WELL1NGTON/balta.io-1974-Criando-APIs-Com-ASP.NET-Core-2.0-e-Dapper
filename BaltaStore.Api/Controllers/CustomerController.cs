@@ -24,6 +24,8 @@ namespace BaltaStore.Api.Controllers
 
         [HttpGet]
         [Route("v1/customers")]
+        [ResponseCache(Duration = 15)] // Cache-Control: public, max-age=15
+        // [ResponseCache(Location = ResponseCacheLocation.Client, Duration = 60)]
         public IEnumerable<ListCustomerQueryResult> Get()
         {
             return _repository.Get();
