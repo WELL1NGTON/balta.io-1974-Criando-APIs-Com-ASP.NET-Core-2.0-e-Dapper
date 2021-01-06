@@ -14,7 +14,7 @@ namespace BaltaStore.Domain.StoreContext.Commands.OrderCommands.Inputs
         }
 
         public Guid Customer { get; set; }
-        public IList<OrderItemCommand> OrderItems { get; set; }
+        public IList<OrderItemCommand> OrderItems { get; }
 
         public bool Valid()
         {

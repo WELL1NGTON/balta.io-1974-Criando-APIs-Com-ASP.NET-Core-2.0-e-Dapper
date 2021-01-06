@@ -44,7 +44,7 @@ namespace BaltaStore.Domain.StoreContext.Entities
         public void Place()
         {
             // Gera o número do pedido
-            Number = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 8).ToUpper();
+            Number = Guid.NewGuid().ToString().Replace("-", "", StringComparison.Ordinal).Substring(0, 8).ToUpper();
 
             if (_items.Count == 0)
                 AddNotification("Order", "Este pedido não possui itens");

@@ -1,3 +1,5 @@
+using System;
+using System.Globalization;
 using FluentValidator;
 using FluentValidator.Validation;
 
@@ -21,8 +23,11 @@ namespace BaltaStore.Domain.StoreContext.ValueObjects
             return Number;
         }
 
-        public bool Validate(string cpf)
+        public static bool Validate(string cpf)
         {
+            if (cpf == null)
+                return false;
+
             int[] multiplicador1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
             int[] multiplicador2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
             string tempCpf;
@@ -30,7 +35,7 @@ namespace BaltaStore.Domain.StoreContext.ValueObjects
             int soma;
             int resto;
             cpf = cpf.Trim();
-            cpf = cpf.Replace(".", "").Replace("-", "");
+            cpf = cpf.Replace(".", "", StringComparison.Ordinal).Replace("-", "", StringComparison.Ordinal);
             if (cpf.Length != 11)
                 return false;
             tempCpf = cpf.Substring(0, 9);
@@ -55,11 +60,12 @@ namespace BaltaStore.Domain.StoreContext.ValueObjects
                 resto = 11 - resto;
             digito = digito + resto.ToString();
 
-            // ! string.EndsWith(string) não está funcionando com o .NET 5.0.101
-            bool teste = "teste".EndsWith("te");
+            // ! https://docs.microsoft.com/en-us/dotnet/standard/base-types/string-comparison-net-5-plus
+            // CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+            bool teste = "teste".EndsWith("te", StringComparison.Ordinal);
 
-            // return cpf.EndsWith(digito);
-            return cpf.Substring(cpf.Length - 2) == digito;
+            return cpf.EndsWith(digito, StringComparison.Ordinal);
+            // return cpf.Substring(cpf.Length - 2) == digito;
         }
     }
 }

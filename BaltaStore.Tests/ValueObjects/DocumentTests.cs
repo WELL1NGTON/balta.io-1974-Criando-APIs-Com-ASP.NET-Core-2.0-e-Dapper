@@ -7,8 +7,8 @@ namespace BaltaStore.Tests.ValueObjects
     public class DocumentTests
     {
 
-        protected Document validDocument;
-        protected Document invalidDocument;
+        protected private Document validDocument;
+        protected private Document invalidDocument;
         public DocumentTests()
         {
             validDocument = new Document("28659170377");
