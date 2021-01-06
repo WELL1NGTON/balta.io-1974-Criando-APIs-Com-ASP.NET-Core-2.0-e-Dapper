@@ -15,25 +15,14 @@ namespace BaltaStore.Api.Controllers
             return new { version = "Version 0.0.1" };
         }
 
-        // [HttpPost]
-        // [Route("rota/01")]
-        // public string Post()
-        // {
-        //     return "Hello World";
-        // }
+        [HttpGet]
+        [Route("error")]
+        public string Error()
+        {
+            throw new System.Exception("Ocorreu algum erro");
+            return "erro";
+        }
 
-        // [HttpPut]
-        // [Route("rota/01")]
-        // public string Put()
-        // {
-        //     return "Hello World";
-        // }
 
-        // [HttpDelete]
-        // [Route("rota/01")]
-        // public string Delete()
-        // {
-        //     return "Hello World";
-        // }
     }
 }

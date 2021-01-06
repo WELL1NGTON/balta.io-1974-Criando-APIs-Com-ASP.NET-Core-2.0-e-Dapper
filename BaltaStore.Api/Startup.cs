@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Elmah.Io.AspNetCore;
 
 namespace BaltaStore.Api
 {
@@ -36,6 +37,12 @@ namespace BaltaStore.Api
             {
                 x.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "My API", Version = "v1" });
             });
+
+            services.AddElmahIo(o =>
+            {
+                o.ApiKey = "8e2361070b454ec3a888ddca62c9cb3c";
+                o.LogId = new Guid("74a07aec-505d-4cf1-acf6-eac78085fe1d");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,6 +62,8 @@ namespace BaltaStore.Api
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Balta Store - V1");
             });
+
+            app.UseElmahIo();
 
             // app.UseRouting();
 
