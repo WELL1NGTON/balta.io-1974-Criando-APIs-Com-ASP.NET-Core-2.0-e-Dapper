@@ -8,6 +8,7 @@ using BaltaStore.Domain.StoreContext.Services;
 using BaltaStore.Infra.StoreContext.DataContext;
 using BaltaStore.Infra.StoreContext.Repositories;
 using BaltaStore.Infra.StoreContext.Services;
+using Microsoft.ApplicationInsights.Web;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -33,6 +34,8 @@ namespace BaltaStore.Api
                 .AddJsonFile("appsettings.json");
 
             Configuration = builder.Build();
+
+            services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddMvc(option => option.EnableEndpointRouting = false);
 
