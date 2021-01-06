@@ -106,5 +106,17 @@ namespace BaltaStore.Tests.Entitites
             foreach (var delivery in _order.Deliveries)
                 Assert.AreEqual(EDeliveryStatus.Canceled, delivery.Status);
         }
+
+        public void CreateCustomer()
+        {
+            // Verifica se CPF já existe
+            // Verificar se o E-mail já existe
+            // Criar os VOs
+            // Criar a entidade
+            // Validar as entidades e VO
+            // Inserir o cliente no banco
+            // Enviar convite do Slack
+            // Envia um E-mail de boas vindas
+        }
     }
 }
