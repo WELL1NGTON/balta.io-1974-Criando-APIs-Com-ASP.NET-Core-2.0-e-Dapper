@@ -43,7 +43,7 @@ namespace BaltaStore.Domain.StoreContext.Handlers
 
         public ICommandResult Handle(AddAddressCommand command)
         {
-            throw new System.NotImplementedException();
+            return new CreateCustomerCommandResult(Guid.NewGuid(), name.ToString(), email.Address);
         }
     }
 }
